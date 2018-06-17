@@ -1,4 +1,4 @@
-import {Component, ContentChild, Input, OnInit, AfterContentInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, ContentChild, Input} from '@angular/core';
 import {TabTitleComponent} from '../tab-title/tab-title.component';
 
 @Component({
@@ -9,17 +9,7 @@ import {TabTitleComponent} from '../tab-title/tab-title.component';
       </ng-container>
   `
 })
-export class TabComponent implements OnInit, AfterContentInit {
+export class TabComponent {
   @ContentChild(TabTitleComponent) title: TabTitleComponent;
-  @ContentChild(TabTitleComponent) content: TabTitleComponent;
   @Input() active = false;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  ngAfterContentInit() {
-    console.log(this.title);
-    console.log(this.content);
-  }
 }

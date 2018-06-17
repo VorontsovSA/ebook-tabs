@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'tab-content',
@@ -6,11 +6,5 @@ import { Component, OnInit } from '@angular/core';
       <ng-content></ng-content>
   `
 })
-export class TabContentComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class TabContentComponent {
 }

@@ -2,11 +2,7 @@ import {
   AfterContentInit,
   Component,
   ContentChildren,
-  EventEmitter,
-  OnChanges,
-  Output,
-  QueryList,
-  SimpleChanges
+  QueryList
 } from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 
@@ -29,14 +25,8 @@ import {TabComponent} from '../tab/tab.component';
       </section>
   `
 })
-export class TabsComponent implements AfterContentInit, OnChanges {
+export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-  @Output() onSelect = new EventEmitter();
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
 
   ngAfterContentInit() {
     let activeTabs = this.tabs.filter((tab) => tab.active);
@@ -50,8 +40,6 @@ export class TabsComponent implements AfterContentInit, OnChanges {
 
   selectTab(tab: TabComponent){
     this.tabs.toArray().forEach(tab => tab.active = false);
-
     tab.active = true;
-    this.onSelect.emit(tab);
   }
 }

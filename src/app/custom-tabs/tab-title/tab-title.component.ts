@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'tab-title',
@@ -8,16 +8,10 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
     </p>
   `
 })
-export class TabTitleComponent implements OnInit, AfterViewInit {
+export class TabTitleComponent {
   @ViewChild('titleContent') titleContent: ElementRef;
 
-  ngAfterViewInit() {
-    console.log(this.titleContent.nativeElement.innerHTML);
-  }
   constructor() { }
-
-  ngOnInit() {
-  }
 
   getTitle() {
     return this.titleContent.nativeElement.innerHTML;
