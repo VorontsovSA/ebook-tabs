@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {TabsComponent} from './custom-tabs/tabs/tabs.component';
 
 @Component({
   selector: 'my-app',
@@ -6,6 +7,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild(TabsComponent) tabsElement: TabsComponent;
   public tabs = [1, 2];
 
   public dec() {

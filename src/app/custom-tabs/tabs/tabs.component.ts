@@ -29,6 +29,19 @@ export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
   ngAfterContentInit() {
+    this.cleanSelection();
+
+    this.tabs.changes.subscribe(_ =>
+      this.cleanSelection() // subsequent calls to processChildren
+    );
+  }
+
+  selectTab(tab: TabComponent){
+    this.tabs.toArray().forEach(tab => tab.active = false);
+    tab.active = true;
+  }
+
+  cleanSelection() {
     let activeTabs = this.tabs.filter((tab) => tab.active);
 
     if (activeTabs.length === 0) {
@@ -36,10 +49,5 @@ export class TabsComponent implements AfterContentInit {
         this.selectTab(this.tabs.first);
       });
     }
-  }
-
-  selectTab(tab: TabComponent){
-    this.tabs.toArray().forEach(tab => tab.active = false);
-    tab.active = true;
   }
 }
