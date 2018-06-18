@@ -1,20 +1,35 @@
-<button (click)="dec()">
-    Remove tab
-</button>
-<button (click)="inc()">
-    Add tab
-</button>
+<button (click)="addTab(1)">Add tab 1</button>
+<button (click)="addTab(2)">Add tab 2</button>
+<button (click)="addTab(3)">Add tab 3</button>
+<button (click)="addTab(4)">Add tab 4</button>
+<button (click)="addTab(5)">Add tab 5</button>
 
 <br>
 
 <tabs>
-  <tab *ngFor="let tab of tabs">
-    <tab-title>
-      Tab <b>{{ tab }}</b> title
-    </tab-title>
-    <tab-content>
-      Tab <b>{{ tab }}</b> content
-      <test [tab]="tab"></test>
-    </tab-content>
+  <tab [title]="'Static tab'">
+      Static tab content
+      <test [tab]="0"></test>
   </tab>
 </tabs>
+
+<ng-template #template1>
+  Dynamic tab content
+  <test [tab]="1"></test>
+</ng-template>
+<ng-template #template2>
+  Dynamic tab content
+  <test [tab]="2"></test>
+</ng-template>
+<ng-template #template3>
+  Dynamic tab content
+  <test [tab]="3"></test>
+</ng-template>
+<ng-template #template4>
+  Dynamic tab content
+  <test [tab]="4"></test>
+</ng-template>
+<ng-template #template5>
+  Dynamic tab content
+  <test [tab]="5"></test>
+</ng-template>

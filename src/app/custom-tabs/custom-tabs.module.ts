@@ -1,15 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {TabComponent} from './tab/tab.component';
 import {TabsComponent} from './tabs/tabs.component';
-import {TabTitleComponent} from './tab-title/tab-title.component';
-import {TabContentComponent} from './tab-content/tab-content.component';
+import {DynamicTabsDirective} from './dynamic-tabs.directive';
 
 export const customElements = [
   TabComponent,
   TabsComponent,
-  TabTitleComponent,
-  TabContentComponent,
+  DynamicTabsDirective,
 ];
 
 @NgModule({
@@ -19,6 +17,12 @@ export const customElements = [
   exports: [
     ...customElements
   ],
-  declarations: [TabsComponent, TabComponent, TabTitleComponent, TabContentComponent]
+  declarations: [
+    ...customElements
+  ],
+  entryComponents: [
+    TabComponent
+  ],
 })
-export class CustomTabsModule { }
+export class CustomTabsModule {
+}
